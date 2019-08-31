@@ -41,31 +41,38 @@ class GameBoard:
 					return 1
 				else:
 					return 2
-		#[
-		#[a,a,a],
-		#[n,n,n],
-		#[c,c,c]
-		#	]
 		for i in range(0,len(self.board[0])):
 			#check columns
-			x = 0
-			o = 0
-			for j in range(0,len(self.board)):
-				if self.board[i][j] == 0:
+			x = False
+			o = False
+			for j in range(0,len(self.board)):	
+				if self.board[j][i] == 0:
 					break
+				elif self.board[j][i] == 1:
+					x = True
+					if o:
+						break
+						#there are x's and o's in the column, break
+				elif self.board[j][i] == 2:
+					o = True
+					if x:
+						break
+						#there are x's and o's in the column, break
 			else:
-				
-					
-			
-					
-		
+				#we did not break, so we found a win
+				#break out of the main loop
+				if x:
+					return 1
+				else:
+					#we know if there is a win, and its not x it has to be o
+					return 2
 		return False
 
 if __name__ == '__main__':
 	gb = GameBoard(3,3)
-	gb.setNode((0,0),'o')
 	gb.setNode((1,0),'o')
-	gb.setNode((2,0),'o')
+	gb.setNode((1,1),'o')
+	gb.setNode((1,2),'o')
 	for row in gb.board:
 		print(row)
 	print(gb.checkWin())
