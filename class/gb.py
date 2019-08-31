@@ -41,9 +41,23 @@ class GameBoard:
 					return 1
 				else:
 					return 2
+		#[
+		#[a,a,a],
+		#[n,n,n],
+		#[c,c,c]
+		#	]
 		for i in range(0,len(self.board[0])):
 			#check columns
+			x = 0
+			o = 0
+			for j in range(0,len(self.board)):
+				if self.board[i][j] == 0:
+					break
+			else:
+				
+					
 			
+					
 		
 		return False
 
